@@ -37,21 +37,20 @@
                               <div id="calculate3" class="button">3</div>
                             </div>
                             <div class="calc-button-row">
-                                <div class="button"><</div>
+                                <div class="button" id="backButton" ><</div>
                                 <div id="calculate0" class="button">0</div>
-                                <div class="button">C</div>
+                                <div id="clearBtn" class="button">C</div>
                             </div>
                             <div>
-                                <button type="submit" class="submit-btn">Submit</button>
+                                <button id="submitBtn" type="submit" class="submit-btn">Submit</button>
                                 <p class="action-left">3 try left</p>
                             </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="notify-section">
-            <p class="notify">❌ Pin Didn't Match, Please try again</p>
-            <p class="notify">✅ Pin Matched... Secret door is opening for you</p>
+        <div id="matched" class="notify-section">
+            
         </div>
     </div>
 
@@ -66,52 +65,79 @@
         //calculator
         var one = document.getElementById('calculate1');
         one.addEventListener('click',function(){
-            var oneFinal =  document.getElementById('calculateDisplay').value  += one.innerHTML;
+            document.getElementById('calculateDisplay').value  += one.innerHTML;
         })
 
         var two = document.getElementById('calculate2');
         two.addEventListener('click',function(){
-            var twoFinal =  document.getElementById('calculateDisplay').value += two.innerHTML;
+            document.getElementById('calculateDisplay').value += two.innerHTML;
         })
 
         var three = document.getElementById('calculate3');
         three.addEventListener('click',function(){
-            var twoFinal =  document.getElementById('calculateDisplay').value += three.innerHTML;
+            document.getElementById('calculateDisplay').value += three.innerHTML;
         })
 
         var four = document.getElementById('calculate4');
         four.addEventListener('click',function(){
-            var twoFinal =  document.getElementById('calculateDisplay').value += four.innerHTML;
+            document.getElementById('calculateDisplay').value += four.innerHTML;
         })
 
         var five = document.getElementById('calculate5');
         five.addEventListener('click',function(){
-            var twoFinal =  document.getElementById('calculateDisplay').value += five.innerHTML;
+            document.getElementById('calculateDisplay').value += five.innerHTML;
         })
 
         var six = document.getElementById('calculate6');
         six.addEventListener('click',function(){
-            var twoFinal =  document.getElementById('calculateDisplay').value += six.innerHTML;
+            document.getElementById('calculateDisplay').value += six.innerHTML;
         })
 
         var seven = document.getElementById('calculate7');
         seven.addEventListener('click',function(){
-            var twoFinal =  document.getElementById('calculateDisplay').value += seven.innerHTML;
+            document.getElementById('calculateDisplay').value += seven.innerHTML;
         })
 
         var eight = document.getElementById('calculate8');
         eight.addEventListener('click',function(){
-            var twoFinal =  document.getElementById('calculateDisplay').value += eight.innerHTML;
+            document.getElementById('calculateDisplay').value += eight.innerHTML;
         })
 
         var nine = document.getElementById('calculate9');
         nine.addEventListener('click',function(){
-            var twoFinal =  document.getElementById('calculateDisplay').value += nine.innerHTML;
+            document.getElementById('calculateDisplay').value += nine.innerHTML;
         })
 
         var zero = document.getElementById('calculate0');
         zero.addEventListener('click',function(){
-            var twoFinal =  document.getElementById('calculateDisplay').value += zero.innerHTML;
+            document.getElementById('calculateDisplay').value += zero.innerHTML;
+        })
+
+        var clearButton = document.getElementById('clearBtn');
+        clearButton.addEventListener('click',function(){
+            document.getElementById('calculateDisplay').value = null;
+        })
+
+        var submitButton = document.getElementById('submitBtn');
+        submitButton.addEventListener('click',function(){
+            console.log('submitButtonWorking');
+            if(document.getElementById('pinInput').value == document.getElementById('calculateDisplay').value){
+                const pin = document.getElementById('matched')
+                const createParagraph = document.createElement('p');
+                createParagraph.innerHTML = '✅ Pin Matched... Secret door is opening for you'
+                pin.appendChild(createParagraph);
+            }
+            else{
+                const pin1 = document.getElementById('matched');
+                const createParagraph1 = document.createElement('p');
+                createParagraph1.innerHTML = '❌ pin did not match,please try again'
+                pin1.appendChild(createParagraph1);
+        }
+        })
+        
+        document.getElementById('backButton').addEventListener('click',function(){
+          var exp = document.getElementById('calculateDisplay').value;
+          document.getElementById('calculateDisplay').value = exp.substring(0,exp.length-1);
         })
 
 
